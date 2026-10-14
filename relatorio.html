@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Relatório - Banco de Dados Schulz S.A.</title>
+<style>
+@page {
+    size: 210mm 297mm;
+    margin: 20mm;
+}
+
+@page {
+    size: A4;
+    margin: 2cm;
+}
+body {
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #222;
+}
+h1 {
+    text-align: center;
+    font-size: 18pt;
+    color: #183153;
+}
+h2 {
+    font-size: 13pt;
+    color: #183153;
+    margin-top: 25px;
+}
+p {
+    text-align: justify;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+th, td {
+    border: 1px solid #888;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #e8edf3;
+}
+</style>
+</head>
+<body>
+
+<h1>PROJETO APLICADO I</h1>
+<h1>Modelagem e Implementação de Banco de Dados</h1>
+
+<p><strong>Empresa parceira:</strong> Schulz S.A.</p>
+<p><strong>Instituição:</strong> UNISENAI</p>
+<p><strong>Unidade curricular:</strong> Projeto Aplicado I</p>
+<p><strong>Professor:</strong> Hugo Menezes Barra</p>
+<p><strong>Tema:</strong> Entrega 02 - Banco de Dados Relacional SQLite</p>
+
+<h2>1. Introdução</h2>
+
+<p>Este projeto apresenta a modelagem e implementação de um
+banco de dados relacional utilizando SQLite, com o objetivo
+de organizar informações de equipamentos, técnicos,
+solicitantes e medições de calibração da Schulz S.A.</p>
+
+<p>A proposta busca substituir o armazenamento baseado
+exclusivamente em planilhas por uma estrutura relacional,
+facilitando consultas e reduzindo a repetição de dados.</p>
+
+<h2>2. Estrutura do Banco de Dados</h2>
+
+<p>O banco foi organizado em três tabelas principais.</p>
+
+<table>
+<tr><th>Tabela</th><th>Finalidade</th></tr>
+<tr>
+<td>tecnicos</td>
+<td>Armazena a identificação dos técnicos e solicitantes.</td>
+</tr>
+<tr>
+<td>equipamentos</td>
+<td>Armazena o cadastro dos equipamentos calibrados.</td>
+</tr>
+<tr>
+<td>medicoes</td>
+<td>Armazena os resultados e informações de calibração.</td>
+</tr>
+</table>
+
+<h2>3. Relacionamentos</h2>
+
+<p>As tabelas possuem chaves primárias (PK) para identificar
+cada registro e chaves estrangeiras (FK) para estabelecer
+os relacionamentos entre elas.</p>
+
+<p>A tabela de medições referencia o equipamento,
+o técnico executante e o solicitante da calibração.
+Isso permite registrar diversas medições para um mesmo
+equipamento sem repetir todos os dados cadastrais.</p>
+
+<h2>4. Dicionário de Dados</h2>
+
+<p>O dicionário documenta 25 campos distribuídos nas três
+tabelas. Foram utilizados os tipos INTEGER, TEXT e REAL,
+de acordo com as necessidades de armazenamento.</p>
+
+<p>Entre os campos estão código, denominação, parâmetro
+avaliado, valor nominal, tolerâncias, medidas realizadas,
+média, desvio padrão, valor obtido, erro e status.</p>
+
+<h2>5. Implementação SQLite</h2>
+
+<p>O banco foi implementado por meio do arquivo
+03_banco.sql, contendo os comandos CREATE TABLE,
+PRIMARY KEY, FOREIGN KEY e restrições de integridade.</p>
+
+<p>O arquivo gerado recebeu o nome schulz_calibracao.db.</p>
+
+<h2>6. Testes Realizados</h2>
+
+<p>Foram realizados testes de criação das três tabelas,
+cadastro de técnico, cadastro de equipamento e registro
+de medição.</p>
+
+<p>Também foi realizado um teste de chave estrangeira,
+no qual o banco impediu a inclusão de uma medição
+associada a um equipamento inexistente.</p>
+
+<p>A verificação PRAGMA integrity_check retornou
+o resultado "ok".</p>
+
+<p>Uma consulta utilizando JOIN permitiu recuperar
+informações do equipamento, técnico, solicitante
+e medição em um único resultado.</p>
+
+<h2>7. Exemplo de Calibração</h2>
+
+<table>
+<tr><th>Informação</th><th>Valor</th></tr>
+<tr><td>Equipamento</td><td>Dispositivo de controle</td></tr>
+<tr><td>Código</td><td>703.1208</td></tr>
+<tr><td>Certificado</td><td>00091/2026</td></tr>
+<tr><td>Parâmetro</td><td>PLANICIDADE_REF</td></tr>
+<tr><td>Valor nominal</td><td>0,000 mm</td></tr>
+<tr><td>Valor obtido</td><td>0,002 mm</td></tr>
+<tr><td>Situação calculada</td><td>CONFORME</td></tr>
+</table>
+
+<h2>8. Conclusão</h2>
+
+<p>A implementação do banco SQLite demonstrou como
+organizar informações de calibração utilizando tabelas
+relacionadas, chaves primárias e estrangeiras.</p>
+
+<p>Os testes confirmaram o funcionamento da estrutura
+proposta e sua capacidade de armazenar e consultar
+dados de equipamentos e medições.</p>
+
+<p>O projeto representa uma estrutura inicial para
+a organização dos registros de calibração,
+podendo ser ampliado em etapas futuras.</p>
+
+</body>
+</html>

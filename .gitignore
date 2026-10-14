@@ -1,0 +1,10 @@
+# Backups
+*_backup.sql
+*_backup.db
+
+# Arquivos temporários
+*.tmp
+*.log
+
+# Pacote de entrega
+Entrega_02_Schulz.zip
